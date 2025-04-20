@@ -1,0 +1,1 @@
+export enum playerStatus { "Activo" , "Lesionado" , "Inactivo"}
