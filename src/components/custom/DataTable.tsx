@@ -55,28 +55,26 @@ export function DataTable<TData, TValue>({
         }
     })
     return (
-        <div className="flex flex-col gap-5">
-            <div className="flex items-center justify-between py-2">
+        <div className="flex flex-col gap-5  px-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 w-full justify-between py-2 gap-2">
                 <Input
                     placeholder="Encontrar jugador"
                     value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-                    onChange={(event) =>
-                        table.getColumn("name")?.setFilterValue(event.target.value)
-                    }
-                    className="max-w-sm"
+                    onChange={(event) => table.getColumn("name")?.setFilterValue(event.target.value) }
+                    className="max-w-12/12 md:max-w-6/12"
                 /> 
-                <div className="flex flex-row gap-2" >
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_36px] gap-2 w-12/12 md:w-fit justify-self-end" >
                     <Select
                         value={(table.getColumn("rol")?.getFilterValue() as string) ?? ""}
                         onValueChange={(value : string) =>(table.getColumn("rol")?.setFilterValue(value))}
                     >
-                        <SelectTrigger className="w-[180px]">
+                        <SelectTrigger className="w-[100%] md:w-[180px]">
                             <SelectValue placeholder="Rol" />
                         </SelectTrigger>
                         <SelectContent>
                             {
-                                Object.keys(positions).map( pos => (
-                                    <SelectItem value={pos}>{positions[pos as PositionsKey]}</SelectItem>
+                                Object.keys(positions).map( (pos, key) => (
+                                    <SelectItem key={`${key} - ${pos}`} value={pos}>{positions[pos as PositionsKey]}</SelectItem>
                                 ) )
                             }
                         </SelectContent>
@@ -90,7 +88,7 @@ export function DataTable<TData, TValue>({
                             return table.getColumn("status")?.setFilterValue(playerStatus[valueAsIndex as unknown as number])
                         }}
                     >
-                        <SelectTrigger className="w-[180px]">
+                        <SelectTrigger className="w-[100%] md:w-[180px]">
                             <SelectValue placeholder="Estado" />
                         </SelectTrigger>
                         <SelectContent>
@@ -99,26 +97,29 @@ export function DataTable<TData, TValue>({
                             <SelectItem value={playerStatus[2]}>{playerStatus[2]}</SelectItem>
                         </SelectContent>
                     </Select>
-                    <Button size={'icon'} variant={'secondary'} onClick={()=>table.resetColumnFilters()}>
+                    <Button size={'icon'} className="hidden md:inline-flex" variant={'secondary'} onClick={()=>table.resetColumnFilters()}>
                         <FunnelXIcon/>
+                    </Button>
+                    <Button className="md:hidden" variant={'secondary'} onClick={()=>table.resetColumnFilters()}>
+                        <FunnelXIcon/> Limpiar filtros
                     </Button>
                 </div>
             </div>
-            <div className="rounded-md border">
+            <div className="rounded-md border ">
                 <Table>
                     <TableHeader>
                         {table.getHeaderGroups().map((headerGroup) => (
                             <TableRow key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => {
                                     return (
-                                    <TableHead key={header.id}>
-                                        {header.isPlaceholder
-                                        ? null
-                                        : flexRender(
-                                            header.column.columnDef.header,
-                                            header.getContext()
-                                            )}
-                                    </TableHead>
+                                        <TableHead key={header.id}>
+                                            {header.isPlaceholder
+                                            ? null
+                                            : flexRender(
+                                                header.column.columnDef.header,
+                                                header.getContext()
+                                                )}
+                                        </TableHead>
                                     )
                                 })}
                             </TableRow>
@@ -132,9 +133,9 @@ export function DataTable<TData, TValue>({
                                     data-state={row.getIsSelected() && "selected"}
                                 >
                                     {row.getVisibleCells().map((cell) => (
-                                    <TableCell key={cell.id}>
-                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                    </TableCell>
+                                        <TableCell key={cell.id}>
+                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                        </TableCell>
                                     ))}
                                 </TableRow>
                             ))

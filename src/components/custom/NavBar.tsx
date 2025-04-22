@@ -23,6 +23,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { MenuItem, NavbarProps } from "@/interfaces/navigation";
+import DarkmodeBtn from "./DarkmodeBtn";
 
 const NavData : NavbarProps = {
     logo : {
@@ -89,7 +90,7 @@ const NavData : NavbarProps = {
     },
 }
 
-const MainNav = () => {
+const MainNav = ( ) => {
 
     const {logo, menu, auth} = NavData
 
@@ -111,12 +112,13 @@ const MainNav = () => {
                         </NavigationMenuList>
                     </NavigationMenu>
                     </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 align-center ">
+                    <DarkmodeBtn />
                     <Button asChild variant="outline" size="sm">
-                    <a href={auth?.login.url}>{auth?.login.title}</a>
+                        <a href={auth?.login.url}>{auth?.login.title}</a>
                     </Button>
                     <Button asChild size="sm">
-                    <a href={auth?.signup.url}>{auth?.signup.title}</a>
+                        <a href={auth?.signup.url}>{auth?.signup.title}</a>
                     </Button>
                 </div>
                 </nav>
@@ -126,14 +128,17 @@ const MainNav = () => {
                 <div className="flex items-center justify-between">
                     {/* Logo */}
                     <a href={logo?.url} className="flex items-center gap-2">
-                    <img src={logo?.src} className="max-h-8" alt={logo?.alt} />
+                        <img src={logo?.src} className="max-h-8" alt={logo?.alt} />
                     </a>
                     <Sheet>
-                    <SheetTrigger asChild>
-                        <Button variant="outline" size="icon">
-                        <Menu className="size-4" />
-                        </Button>
-                    </SheetTrigger>
+                        <div className="flex flex-row gap-2">
+                            <DarkmodeBtn/>
+                            <SheetTrigger asChild>
+                                <Button variant="outline" size="icon">
+                                <Menu className="size-4" />
+                                </Button>
+                            </SheetTrigger>
+                        </div>
                     <SheetContent className="overflow-y-auto">
                         <SheetHeader>
                         <SheetTitle>
