@@ -20,11 +20,11 @@ const badgeVariants = cva(
         active:
           "text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
         activePlayer:
-          "text-primary-foreground border-green-700 bg-green-600 [a&]:hover:bg-green-700 [a&]:hover:bg-green-700",
+          "text-primary-foreground border-green-700 bg-green-600 dark:bg-green-800 dark:text-slate-50 [a&]:hover:bg-green-700 [a&]:hover:bg-green-700",
         inactivePlayer:
-          "text-primary-foreground border-slate-700 bg-slate-600 [a&]:hover:bg-slate-700 [a&]:hover:bg-slate-700",
+          "text-primary-foreground border-slate-700 bg-slate-600 dark:bg-slate-800 dark:text-slate-50 [a&]:hover:bg-slate-700 [a&]:hover:bg-slate-700",
         injuredPlayer:
-          "text-primary-foreground border-rose-700 bg-rose-600 [a&]:hover:bg-rose-600 [a&]:hover:bg-rose-700",
+          "text-primary-foreground border-rose-700 bg-rose-600 dark:bg-rose-800 dark:text-slate-50 [a&]:hover:bg-rose-600 [a&]:hover:bg-rose-700",
       },
     },
     defaultVariants: {

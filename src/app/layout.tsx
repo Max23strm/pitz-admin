@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "../css/layout.css"
 import { MainFooter } from "@/components/custom/Footer";
 import { MainNav } from "@/components/custom/NavBar";
 import { ThemeProvider } from "@/providers/theme-provider";
@@ -25,9 +26,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-    let theme = ''
     return (
-      <html lang="es" className={theme}>
+      <html lang="es">
           <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
             <ThemeProvider
               attribute="class"

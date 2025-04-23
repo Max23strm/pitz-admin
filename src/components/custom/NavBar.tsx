@@ -142,8 +142,6 @@ const MainNav = ( ) => {
                         </div>
                         <SheetContent className="overflow-y-auto">
                             <SheetHeader>
-                            <SheetTitle>
-                            </SheetTitle>
                             </SheetHeader>
                             <div className="flex flex-col gap-6 p-4">
                             <Accordion
