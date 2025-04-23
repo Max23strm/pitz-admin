@@ -10,15 +10,20 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { IdCard } from "lucide-react"
 
-const page = async (props : {params: {player_id: string}, searchParams:string}) => {
+const page = async ({
+    params,
+  }: {
+    params: Promise<{ player_id: string }>
+  }) => {
 
-    const params = await props.params
+    const id = (await params).player_id
+
     return (
         <main className='flex flex-col gap-4 min-h-screen p-5'>
             <div className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 w-12/12 md:w-12/12">
                 <Avatar className="w-30 h-30 md:hidden mx-auto">
                     <AvatarImage src="https://github.com/shadcn.png" />
-                    <AvatarFallback>MO</AvatarFallback>
+                    <AvatarFallback>{id}</AvatarFallback>
                 </Avatar>
                 <Card className="w-full flex flex-col gap-4 md:min-w-[300px] md:w-full h-fit my-auto">
                     <CardHeader className="flex flex-col gap-3 w-full">

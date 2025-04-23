@@ -28,7 +28,7 @@ import { Input } from "../ui/input"
 import { playerStatus } from "@/interfaces/general/playerStatus"
 import { positions, PositionsKey } from "@/interfaces/general/positions"
 import { Button } from "../ui/button"
-import { FunnelXIcon, Ghost } from 'lucide-react'
+import { FunnelXIcon } from 'lucide-react'
 import { Card, CardContent } from "../ui/card"
 
 interface DataTableProps<TData, TValue> {
@@ -95,7 +95,8 @@ export function DataTable<TData, TValue>({
                         <Select
                             value={(table.getColumn("status")?.getFilterValue() as string) ?? ""}
                             onValueChange={(value : string) =>{
-                                const valueAsIndex  = playerStatus[value as any]
+                                const newValue = parseInt(value)
+                                const valueAsIndex  = playerStatus[newValue]
                                 return table.getColumn("status")?.setFilterValue(playerStatus[valueAsIndex as unknown as number])
                             }}
                         >

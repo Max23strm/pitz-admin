@@ -3,7 +3,6 @@ import React from 'react'
 import { DataTable } from '@/components/custom/DataTable'
 import { columns } from './table/columns.'
 import { PlayerInfo } from '@/interfaces/tables/playerInfo'
-import { positions } from '@/interfaces/general/positions'
 import { playerStatus } from '@/interfaces/general/playerStatus'
 
 const tableData : PlayerInfo[] = [

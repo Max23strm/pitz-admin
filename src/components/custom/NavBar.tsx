@@ -19,7 +19,6 @@ import {
   Sheet,
   SheetContent,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { MenuItem, NavbarProps } from "@/interfaces/navigation";
