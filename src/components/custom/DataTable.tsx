@@ -28,7 +28,7 @@ import { Input } from "../ui/input"
 import { playerStatus } from "@/interfaces/general/playerStatus"
 import { positions, PositionsKey } from "@/interfaces/general/positions"
 import { Button } from "../ui/button"
-import { FunnelXIcon } from 'lucide-react'
+import { FunnelXIcon, Ghost } from 'lucide-react'
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -66,7 +66,7 @@ export function DataTable<TData, TValue>({
                 <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_36px] gap-2 w-12/12 md:w-fit justify-self-end" >
                     <Select
                         value={(table.getColumn("rol")?.getFilterValue() as string) ?? ""}
-                        onValueChange={(value : string) =>(table.getColumn("rol")?.setFilterValue(value))}
+                        onValueChange={(value : string | null) =>(table.getColumn("rol")?.setFilterValue(value))}
                     >
                         <SelectTrigger className="w-[100%] md:w-[180px]">
                             <SelectValue placeholder="Rol" />
@@ -77,6 +77,15 @@ export function DataTable<TData, TValue>({
                                     <SelectItem key={`${key} - ${pos}`} value={pos}>{positions[pos as PositionsKey]}</SelectItem>
                                 ) )
                             }
+                            <Button 
+                                className="w-full px-2"
+                                variant="outline"
+                                size="sm"
+                                onClick={()=>table.getColumn("status")?.setFilterValue(null)}
+                            >
+                                Limpiar
+                            </Button>
+
                         </SelectContent>
                     </Select>
 
@@ -95,6 +104,14 @@ export function DataTable<TData, TValue>({
                             <SelectItem value={playerStatus[0]}>{playerStatus[0]}</SelectItem>
                             <SelectItem value={playerStatus[1]}>{playerStatus[1]}</SelectItem>
                             <SelectItem value={playerStatus[2]}>{playerStatus[2]}</SelectItem>
+                            <Button 
+                                className="w-full px-2"
+                                variant="outline"
+                                size="sm"
+                                onClick={()=>table.getColumn("status")?.setFilterValue(null)}
+                            >
+                                Limpiar
+                            </Button>
                         </SelectContent>
                     </Select>
                     <Button size={'icon'} className="hidden md:inline-flex" variant={'secondary'} onClick={()=>table.resetColumnFilters()}>
@@ -106,13 +123,13 @@ export function DataTable<TData, TValue>({
                 </div>
             </div>
             <div className="rounded-md border ">
-                <Table>
-                    <TableHeader>
+                <Table className="rounded-md">
+                    <TableHeader className="rounded-md">
                         {table.getHeaderGroups().map((headerGroup) => (
-                            <TableRow key={headerGroup.id}>
+                            <TableRow key={headerGroup.id} className="bg-card rounded-md">
                                 {headerGroup.headers.map((header) => {
                                     return (
-                                        <TableHead key={header.id}>
+                                        <TableHead key={header.id} className="bg-card rounded-md">
                                             {header.isPlaceholder
                                             ? null
                                             : flexRender(

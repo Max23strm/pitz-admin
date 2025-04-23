@@ -130,42 +130,40 @@ const MainNav = ( ) => {
                     <a href={logo?.url} className="flex items-center gap-2">
                         <img src={logo?.src} className="max-h-8" alt={logo?.alt} />
                     </a>
+
                     <Sheet>
                         <div className="flex flex-row gap-2">
                             <DarkmodeBtn/>
                             <SheetTrigger asChild>
                                 <Button variant="outline" size="icon">
-                                <Menu className="size-4" />
+                                    <Menu className="size-4" />
                                 </Button>
                             </SheetTrigger>
                         </div>
-                    <SheetContent className="overflow-y-auto">
-                        <SheetHeader>
-                        <SheetTitle>
-                            <a href={logo?.url} className="flex items-center gap-2">
-                            <img src={logo?.src} className="max-h-8" alt={logo?.alt} />
-                            </a>
-                        </SheetTitle>
-                        </SheetHeader>
-                        <div className="flex flex-col gap-6 p-4">
-                        <Accordion
-                            type="single"
-                            collapsible
-                            className="flex w-full flex-col gap-4"
-                        >
-                            {menu?.map((item) => renderMobileMenuItem(item))}
-                        </Accordion>
+                        <SheetContent className="overflow-y-auto">
+                            <SheetHeader>
+                            <SheetTitle>
+                            </SheetTitle>
+                            </SheetHeader>
+                            <div className="flex flex-col gap-6 p-4">
+                            <Accordion
+                                type="single"
+                                collapsible
+                                className="flex w-full flex-col gap-4"
+                            >
+                                {menu?.map((item) => renderMobileMenuItem(item))}
+                            </Accordion>
 
-                        <div className="flex flex-col gap-3">
-                            <Button asChild variant="outline">
-                            <a href={auth?.login.url}>{auth?.login.title}</a>
-                            </Button>
-                            <Button asChild>
-                            <a href={auth?.signup.url}>{auth?.signup.title}</a>
-                            </Button>
-                        </div>
-                        </div>
-                    </SheetContent>
+                            <div className="flex flex-col gap-3">
+                                <Button asChild variant="outline">
+                                <a href={auth?.login.url}>{auth?.login.title}</a>
+                                </Button>
+                                <Button asChild>
+                                <a href={auth?.signup.url}>{auth?.signup.title}</a>
+                                </Button>
+                            </div>
+                            </div>
+                        </SheetContent>
                     </Sheet>
                 </div>
                 </div>
