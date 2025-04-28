@@ -5,6 +5,7 @@ import "../css/layout.css"
 import { MainFooter } from "@/components/custom/Footer";
 import { MainNav } from "@/components/custom/NavBar";
 import { ThemeProvider } from "@/providers/theme-provider";
+import AnimatedLayout from "@/components/custom/AnimatedLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,9 @@ export default function RootLayout({
               disableTransitionOnChange
             >
                 <MainNav/>
-                {children}
+                <AnimatedLayout>
+                  {children}
+                </AnimatedLayout>
                 <MainFooter/>
             </ThemeProvider>
           </body>

@@ -31,8 +31,8 @@ const tableData : PlayerInfo[] = [
 
 const page = () => {
     return (
-        <main className='flex flex-col gap-2 items-center  min-h-screen'>
-            <section className='container'>
+        <main className='flex flex-col gap-4 min-h-screen p-5 align-center'>
+            <section >
                 <DataTable columns={columns} data={tableData}/>
             </section>
         </main>
