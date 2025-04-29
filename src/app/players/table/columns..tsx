@@ -16,38 +16,12 @@ export const columns: ColumnDef<PlayerInfo>[] = [
     {
         accessorKey: "name",
         header: "Nombre",
-    },
-    {
-        accessorKey: "email",
-        header: "Email",
-    },
-    {
-        accessorKey: "rol",
-        header: "Rol",
-        filterFn: "arrIncludes",
-        cell:({row}) => {
-            const playerPositions : string[] = row.getValue('rol')
-            const id = row.id
-            return <div className="flex flex-row gap-1">
-                {
-                    playerPositions?.map( pos => {
+        cell:({row})=>{
+            const name : string= row.getValue('name')
+            const playerPositions : string[] = row.original.rol
+            const email : string = row.original.email
 
-                        const value : positions = positions[pos as PositionsKey] 
-                        return <Badge key={`${pos}${id}`}>
-                            {value}
-                        </Badge>
-
-                    })
-                }
-            </div>
-        }
-    },
-    {
-        accessorKey: "status",
-        header:  "Estado",
-        filterFn: 'equalsString',
-        cell:({row}) => {
-            const status: string = row.getValue('status')
+            const status: string = row.original.status
             let variant : "activePlayer" | "injuredPlayer" | "inactivePlayer" = 'activePlayer'
             switch (status) {
                 case "Activo" :
@@ -60,17 +34,33 @@ export const columns: ColumnDef<PlayerInfo>[] = [
                     variant = 'inactivePlayer'
                     break
             }
-            return <div className="flex flex-row gap-1">
-                <Badge variant={variant}>
-                    {`${status}`}
-                </Badge>
-            </div>
+            return (
+                <div className="flex flex-col gap-2 pl-5">
+                    <div className="flex flex-row gap-2">
+                        <h5>{name}</h5>
+                        <Badge variant={variant}>
+                            {`${status}`}
+                        </Badge>
+                    </div>
+                    <p className="text-muted-foreground">{email}</p>
+                    <div className="flex flex-row gap-2">
+                    {
+                        playerPositions?.map( pos => {
+
+                            const value : positions = positions[pos as PositionsKey] 
+                            return <Badge key={`${pos}${name}`}>
+                                {value}
+                            </Badge>
+
+                        })
+                    }
+                    </div>
+                </div>
+            )
         }
     },
     {
-        accessorKey: "action",
-        header:  "",
-        filterFn: 'equalsString',
+        id: "actions",
         cell:(props) => {
             const playerId = props.row.original.id
             return <div className="flex flex-row gap-1">

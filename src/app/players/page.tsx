@@ -33,7 +33,7 @@ const page = () => {
     return (
         <main className='flex flex-col gap-4 min-h-screen p-5 align-center'>
             <section >
-                <DataTable columns={columns} data={tableData}/>
+                <DataTable columns={columns} data={tableData} displayHeader={false}/>
             </section>
         </main>
     )

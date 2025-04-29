@@ -11,11 +11,7 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { IdCard } from "lucide-react"
 
-const page = async ({
-    params,
-  }: {
-    params: Promise<{ player_id: string }>
-  }) => {
+const page = async ({  params, }: { params: Promise<{ player_id: string }> }) => {
 
     const id = (await params).player_id
     return (
