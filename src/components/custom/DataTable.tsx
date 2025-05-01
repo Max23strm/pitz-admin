@@ -22,7 +22,6 @@ import { Input } from "../ui/input"
 import { Button } from "../ui/button"
 import { FunnelXIcon } from 'lucide-react'
 import { Card, CardContent } from "../ui/card"
-import { usePathname } from "next/navigation"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]

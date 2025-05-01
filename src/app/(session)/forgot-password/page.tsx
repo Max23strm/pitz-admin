@@ -5,8 +5,6 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import logo from "../../../../public/images/pitz-player.png";
-import Image from "next/image";
 import {
     Form,
     FormControl,
