@@ -16,17 +16,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "@/components/ui/select"
+
 import { useState } from "react"
 import { Input } from "../ui/input"
-import { playerStatus } from "@/interfaces/general/playerStatus"
-import { positions, PositionsKey } from "@/interfaces/general/positions"
 import { Button } from "../ui/button"
 import { FunnelXIcon } from 'lucide-react'
 import { Card, CardContent } from "../ui/card"
@@ -44,7 +36,6 @@ export function DataTable<TData, TValue>({
     displayHeader = true
 }: DataTableProps<TData, TValue>) {
 
-    const path = usePathname()
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
 
     const table = useReactTable({
