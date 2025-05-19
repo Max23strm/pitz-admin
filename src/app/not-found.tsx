@@ -12,7 +12,7 @@ export default function NotFound() {
             </p>
             <Button asChild>
                 <Link href="/">
-                    Return Home
+                    Regresar al Inicio
                 </Link>
             </Button>
         </main>
