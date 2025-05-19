@@ -47,7 +47,7 @@ const page = () => {
                     />
                 </section>
                 <section className='backdrop-blur-md min-h-fit relative'>
-                    <Calendar className='w-full h-fit sticky top-1'/>
+                    <Calendar className='w-full h-fit sticky top-1' showOutsideDays={false}/>
                 </section>
             </div>
         </div>
